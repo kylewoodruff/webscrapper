@@ -19,9 +19,9 @@ var router = express.Router();
 app.use(express.static(__dirname + "/public"));
 
 // setting up handlebars
-app.engine("handlebars", handlebars(){
+app.engine("handlebars", handlebars({
     defaultlayout: "main"
-});
+}));
 app.set("view engine", "handlebars");
 
 // Parse request body as JSON
@@ -38,10 +38,18 @@ app.listen(PORT, function() {
 })
 
 // Require all models
-var db = require("./models");
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect(db, function(error){
+    if (error) {
+       console.log(error);
+    }
+    else {
+        console.log("mongoose connection is successful");
+        
+    }
+});
 
 
 // Use morgan logger for logging requests
