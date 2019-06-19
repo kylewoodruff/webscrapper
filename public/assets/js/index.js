@@ -24,6 +24,7 @@ function renderArticles(articles) {
     articles.forEach(el => {
         articlePanels.push(createPanel(articles[el]));
     });
+    articleContainer.append(articlePanels);
 }
 
 function renderEmpty() {
@@ -57,13 +58,14 @@ function createPanel(article) {
     let panel = $([
         "<div class='panel panel-default'>",
         "<div class='panel-heading'>",
-        "<h3>", article.headline,
+        "<h3>", 
+        article.headline,
         "<a class='btn btn-success save'>",
         "Save Article",
         "</a>",
         "</h3>",
         "</div>",
-        "<div class='panel-bodby'>",
+        "<div class='panel-body'>",
         article.summary,
         "</div>",
         "</div>"
