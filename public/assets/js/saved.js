@@ -47,7 +47,7 @@ $(document).ready(function () {
         articleContainer.append(articlePanels);
     }
 
-    unction createPanel(article) {
+    function createPanel(article) {
         let panel = $([
             "<div class='panel panel-default'>",
             "<div class='panel-heading'>",
