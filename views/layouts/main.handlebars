@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
     <title>Webscraper</title>
@@ -16,7 +17,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <span class="navbar-brand">Mongo Scraper</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +29,12 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/saved">Saved</a>
+                    <a class="nav-link" href="/saved">My Saved Articles</a>
+                </li>
+                <li>
+                    <form class="form-inline">
+                        <button class="btn btn-danger" type="button">Scrape New Articles</button>
+                    </form>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -39,6 +45,12 @@
     </nav>
 
     {{{body}}}
+
+    <footer class="footer">
+        <div class="container">
+            <p>New York Times Mongo Scraper</p>
+        </div>
+    </footer>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
