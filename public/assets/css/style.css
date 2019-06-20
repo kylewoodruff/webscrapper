@@ -49,6 +49,29 @@ body {
     margin-top: 80px;
 }
 
+.save {
+    align-self: flex-end;
+    white-space: nowrap;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.card-default {
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+    /* border: 4px, solid, #3e4246; */
+}
+.card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3e4246;
+    color: white;
+    padding: 10px;
+}
+.card-heading h3 {
+    font-size: 1.5rem;
+}
+
 #title-space {
     display: table;
     height: 500px;

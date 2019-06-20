@@ -12,7 +12,8 @@ const headlineSchema= new Schema({
         type: String,
         required: true
     },
-    date: Date,
+    date: String,
+    url: String,
     saved: {
         type: Boolean,
         default: false

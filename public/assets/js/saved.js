@@ -25,11 +25,11 @@ $(document).ready(function () {
             "<div class='alert alert-warning text-center'>",
             "<h4>Uh oh. Looks like we do not have any new articles.</h4>",
             "</div>",
-            "<div class='panel panel-default'>",
-            "<div class='panel-heading text-center'>",
+            "<div class='card card-default'>",
+            "<div class='card-heading text-center'>",
             "<h3>Would you like to browse available articles?</h3>",
             "</div>",
-            "<div class='panel-body text-center'>",
+            "<div class='card-body text-center'>",
             "<h4><a class='scrape-new'>Try Scraping New Articles</a></h4>",
             "<h4><a href'/'>Browse Articles</a><h4>",
             "</div>",
@@ -42,23 +42,23 @@ $(document).ready(function () {
         let articlePanels = [];
     
         articles.forEach(el => {
-            articlePanels.push(createPanel(articles[el]));
+            articlePanels.push(createPanel(el));
         });
         articleContainer.append(articlePanels);
     }
 
     function createPanel(article) {
         let panel = $([
-            "<div class='panel panel-default'>",
-            "<div class='panel-heading'>",
+            "<div class='card panel-default'>",
+            "<div class='card-heading'>",
             "<h3>", 
             article.headline,
+            "</h3>",
             "<a class='btn btn-danger delete'>",
             "Delete From Saved",
             "</a>",
-            "</h3>",
             "</div>",
-            "<div class='panel-body'>",
+            "<div class='card-body'>",
             article.summary,
             "</div>",
             "</div>"

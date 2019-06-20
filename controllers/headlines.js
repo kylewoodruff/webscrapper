@@ -1,5 +1,5 @@
 const scrape = require("../scripts/scrape");
-const moment = require("moment");
+const makeDate = require("../scripts/date");
 
 const Headline = require("../models/Headlines");
 
@@ -7,9 +7,10 @@ module.exports = {
     fetch: function (callback) {
         scrape(function (data) {
             let articles = data;
+            console.log(articles);
             articles.forEach(el => {
-                articles[el].date = moment();
-                articles[el].saved = false;
+                el.date = makeDate();
+                el.saved = false;
             });
             // insert articles using mongo function
             Headline.collection.insertMany(articles, { ordered: false }, function (err, docs) {
