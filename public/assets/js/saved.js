@@ -1,9 +1,9 @@
 $(document).ready(function () {
     let articleContainer = $(".article-container");
 
-    $(document).on("click", ".bth.delete", handleArticleDelete);
+    $(document).on("click", ".btn.delete", handleArticleDelete);
     $(document).on("click", ".btn.notes", handleArticleNotes);
-    $(document).on("click", ".bth.save", handleNoteSave);
+    $(document).on("click", ".btn.save", handleNoteSave);
     $(document).on("click", ".bth.note-delete", handleNoteDelete);
 
     initPage();
@@ -23,15 +23,8 @@ $(document).ready(function () {
     function renderEmpty() {
         let emptyAlert = $([
             "<div class='alert alert-warning text-center'>",
-            "<h4>Uh oh. Looks like you do not have any saved articles.</h4>",
-            "</div>",
-            "<div class='card card-default'>",
-            "<div class='card-heading text-center'>",
-            "<h3>Return to the home page to save available articles</h3>",
-            "</div>",
-            "<div class='card-body text-center'>",
-            "<h4><a href'/'>Browse Articles</a><h4>",
-            "</div>",
+            "<h4>Oh no. Looks like you do not have any saved articles.</h4>",
+            "<h5>Return to the home page to save available articles</h3>",
             "</div>"
         ].join(""));
         articleContainer.append(emptyAlert);

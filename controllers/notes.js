@@ -1,5 +1,5 @@
 const Note = require("../models/Notes");
-const moment = require("moment");
+const makeDate = require("../scripts/date");
 
 module.exports = {
     get: function(data, callback) {
@@ -10,7 +10,7 @@ module.exports = {
     save: function(data, callback) {
         let newNote = {
             _headlineId: data._id,
-            date: moment(),
+            date: makeDate(),
             noteText: data.noteText
         };
 
