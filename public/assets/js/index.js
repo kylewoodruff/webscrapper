@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let articleContainer = $(".article-container");
-    $(document).on("click", ".btn-save", handleArticleSave);
+    $(document).on("click", ".btn.save", handleArticleSave);
     $(document).on("click", ".scrape-new", handleArticleScrape);
 
     initPage();
