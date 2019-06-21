@@ -23,7 +23,6 @@ module.exports = function (router) {
     router.get("/api/fetch", function (req, res) {
         headlinesController.fetch(function (err, docs) {
 
-
             if (!docs || docs.insertedCount === 0) {
                 res.json({
                     message: "No articles today. Check back tomorow!"
