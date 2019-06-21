@@ -5,11 +5,19 @@ const notesController = require("../controllers/notes");
 
 module.exports = function (router) {
     router.get("/", function (req, res) {
-        res.render("home");
+        res.render("home", {
+            helpers: {
+                scripts: "./assets/js/index.js"
+            }
+        });
     });
 
     router.get("/saved", function (req, res) {
-        res.render("saved");
+        res.render("saved", {
+            helpers: {
+                scripts: function () { return "./assets/js/saved.js" }
+            }
+        });
     });
 
     router.get("/api/fetch", function (req, res) {

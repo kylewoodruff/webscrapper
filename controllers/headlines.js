@@ -7,7 +7,7 @@ module.exports = {
     fetch: function (callback) {
         scrape(function (data) {
             let articles = data;
-            console.log(articles);
+            // console.log(articles);
             articles.forEach(el => {
                 el.date = makeDate();
                 el.saved = false;

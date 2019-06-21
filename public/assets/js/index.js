@@ -17,15 +17,6 @@ $(document).ready(function () {
             });
     }
 
-    function renderArticles(articles) {
-        let articlePanels = [];
-
-        articles.forEach(el => {
-            articlePanels.push(createPanel(articles[el]));
-        });
-        articleContainer.append(articlePanels);
-    }
-
     function renderEmpty() {
         let emptyAlert = $([
             "<div class='alert alert-warning text-center'>",
