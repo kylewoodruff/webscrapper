@@ -4,7 +4,7 @@ $(document).ready(function () {
     $(document).on("click", ".btn.delete", handleArticleDelete);
     $(document).on("click", ".btn.notes", handleArticleNotes);
     $(document).on("click", ".btn.save", handleNoteSave);
-    $(document).on("click", ".bth.note-delete", handleNoteDelete);
+    $(document).on("click", ".btn.note-delete", handleNoteDelete);
 
     initPage();
 
@@ -46,9 +46,14 @@ $(document).ready(function () {
             "<h3>",
             article.headline,
             "</h3>",
-            "<a class='btn btn-danger delete'>",
+            "<div class='btn-wrapper'>",
+            "<button class='btn btn-primary notes'>",
+            "Add Note",
+            "</button>",
+            "<button class='btn btn-danger delete'>",
             "Delete From Saved",
-            "</a>",
+            "</button>",
+            "</div>",
             "</div>",
             "<div class='card-body'>",
             article.summary,
@@ -75,16 +80,27 @@ $(document).ready(function () {
 
     function handleArticleNotes() {
         let currentArticle = $(this).parents(".card").data();
-        $.get("/api/notes/" + currentArticle._id).then(function (data) {
+        console.log("currentArticle:",currentArticle);
+        let currentArticleHead = $(this).parent().siblings("h3").text();
+        console.log("Article Title:",currentArticleHead);
+        let queryUrl = "/api/notes/" + currentArticle.id_;
+        console.log("queryURL:",queryUrl);
+        $.get(queryUrl).then(function (data) {
+            console.log("exsisting notes:",data);
+            console.log("Arctice ID:",data._id);
+            
             let modalText = [
-                "<div class='container-fluid text-center'>",
-                "<h4>Notes for Article: ",
-                currentArticle._id,
-                "<h4>",
+                "<div class='note-modal container-fluid text-center'>",
+                "<h5><strong>Notes for Article: </strong>",
+                currentArticleHead,
+                "</h5>",
                 "<hr />",
                 "<ul class='list-group note-container'>",
                 "</ul>",
-                "<textarea placeholder='New Note' rows='4' cols='60'></textarea>",
+                "<div class='form-group'>",
+                "<label class='note-textarea' for='noteTextarea'><strong>Enter Notes Here</strong></label>",
+                "<textarea class='form-control' id='noteTextarea' rows='4'></textarea>",
+                "</div>",
                 "<button class='btn btn-success save'>Save Note</button>",
                 "</div>"
             ].join("");
@@ -93,9 +109,11 @@ $(document).ready(function () {
                 closeButton: true
             });
             let noteData = {
-                _id: currentArticle._id,
+                _id: currentArticle.id_,
                 notes: data || []
             };
+            console.log("NoteData before save:",noteData);
+            
             $(".btn.save").data("article", noteData);
 
             renderNotesList(noteData);
@@ -133,13 +151,16 @@ $(document).ready(function () {
     function handleNoteSave() {
         let noteData;
         let newNote = $(".bootbox-body textarea").val().trim();
-
+        console.log("Note Content",newNote);
         if (newNote) {
+            console.log("im here:");
             noteData = {
                 _id: $(this).data("article")._id,
                 noteText: newNote
             };
-            $.post("/api/notes", noteData).then(function() {
+            // console.log("noteData: ",noteData._id);
+            
+            $.post("/api/notes", noteData).then(function () {
                 bootbox.hideAll();
             });
         }
@@ -150,7 +171,7 @@ $(document).ready(function () {
         $.ajax({
             url: "/api/notes/" + noteToDelete,
             method: "DELETE"
-        }).then(function(){
+        }).then(function () {
             bootbox.hideAll();
         });
     }

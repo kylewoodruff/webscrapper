@@ -6,6 +6,7 @@ $(document).ready(function () {
     initPage();
 
     function initPage() {
+        console.log("in init func");
         articleContainer.empty();
         $.get("/api/headlines?saved=false")
             .then(function (data) {
@@ -67,18 +68,20 @@ $(document).ready(function () {
 
     function handleArticleSave() {
         let articleToSave = $(this).parents(".card").data();
+        console.log(articleToSave);
+
         articleToSave.saved = true;
 
         $.ajax({
             method: "PATCH",
-            url: "/api/healines",
+            url: "/api/headlines",
             data: articleToSave
-        })
-            .then(function (data) {
-                if (data.ok) {
-                    initPage();
-                }
-            });
+        }).then(function (data) {
+            console.log(data);
+            if (data) {
+                initPage();
+            }
+        });
     }
 
     function handleArticleScrape() {
@@ -89,11 +92,5 @@ $(document).ready(function () {
             })
     }
 
-
-    // $.getJSON("/articles", function(data) {
-    //     data.forEach(i => {
-    //         $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    //     });
-    //   });
 
 });

@@ -50,14 +50,19 @@ body {
     margin-top: 80px;
 }
 
-.save {
+.btn {
     align-self: flex-end;
     white-space: nowrap;
     margin-bottom: auto;
     margin-top: auto;
+    margin-left: 5px;
+    margin-right: 5px;
 }
+.btn-wrapper {
+    display: flex;
+}
+
 .card-default {
-    flex-wrap: nowrap;
     margin-bottom: 20px;
     /* border: 4px, solid, #3e4246; */
 }
@@ -73,8 +78,15 @@ body {
     font-size: 1.5rem;
 }
 
-.note-container{
-    color: lightblue;
+.note-modal {
+    color:  #3e4246;
+}
+.note-modal h5 {
+    padding-right: 10px; 
+}
+.note {
+    display: flex;
+    justify-content: space-between;
 }
 #title-space {
     display: table;
@@ -84,4 +96,8 @@ body {
 #title-display {
     display: table-cell;
     vertical-align: middle;
+}
+
+.note-textarea {
+    margin-top: 10px;
 }

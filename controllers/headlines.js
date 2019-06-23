@@ -18,22 +18,30 @@ module.exports = {
             });
         });
     },
-    delete: function(query, callback) {
+    delete: function (query, callback) {
         Headline.remove(query, callback);
     },
-    get: function(query, callback) {
+    get: function (query, callback) {
         Headline.find(query)
-        .sort({
-            _id: -1
-        })
-        .exec(function(err, doc){
-            callback(doc);
-        });
+            .sort({
+                _id: -1
+            })
+            .exec(function (err, doc) {
+                // console.log(doc);
+                callback(doc);
+            });
     },
-    update: function(query, callback) {
-        Headline.update({_id: query._id}, {
-            $set: query
-        }, {}, callback);
+    update: function (query, callback) {
+        Headline.findOneAndUpdate(
+            {
+                _id: query._id
+            },
+            {
+                $set: query
+            })
+            .exec(function (err, doc) {    
+                callback(doc);      
+            });
     }
 }
 

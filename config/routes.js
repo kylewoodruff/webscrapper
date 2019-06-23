@@ -54,15 +54,24 @@ module.exports = function (router) {
     });
 
     router.patch("/api/headlines", function (req, res) {
-        headlinesController.update(req.body, function (err, data) {
+        let query = {};
+        query._id = req.body.id_;
+        query.saved = req.body.saved;
+        // console.log("routes",query);
+        headlinesController.update(query, function (err, data) {
+            console.log("routes", data);
             res.json(data);
         });
     });
 
     router.get("/api/notes/:headline_id?", function (req, res) {
         let query = {};
+        // console.log(query);
+        
         if (req.params.headline_id) {
             query._id = req.params.headline_id;
+            console.log(query);
+            
         }
         notesController.get(query, function (err, data) {
             res.json(data);
